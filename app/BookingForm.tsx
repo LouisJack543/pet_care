@@ -13,19 +13,28 @@ type BookingDetails = {
   note: string;
 };
 
-const initialBooking: BookingDetails = {
+function getTomorrowMorningPreferredTime() {
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  tomorrow.setHours(9, 30, 0, 0);
+
+  const timezoneOffsetMs = tomorrow.getTimezoneOffset() * 60 * 1000;
+  return new Date(tomorrow.getTime() - timezoneOffsetMs).toISOString().slice(0, 16);
+}
+
+const createInitialBooking = (): BookingDetails => ({
   ownerName: "",
   phone: "",
   petType: "",
   weight: "",
   coat: "日常护理",
   service: "轻松洗护",
-  preferredTime: "",
+  preferredTime: getTomorrowMorningPreferredTime(),
   note: "",
-};
+});
 
 export function BookingForm() {
-  const [booking, setBooking] = useState<BookingDetails>(initialBooking);
+  const [booking, setBooking] = useState<BookingDetails>(createInitialBooking);
   const [submittedBooking, setSubmittedBooking] = useState<BookingDetails | null>(null);
 
   function updateBooking(field: keyof BookingDetails, value: string) {
