@@ -2,7 +2,52 @@
 
 import { BookingForm } from "./BookingForm";
 
+const reviews = [
+  {
+    name: "豆包主人",
+    pet: "比熊 · 2 岁",
+    text: "以前洗澡会紧张发抖，这次美容师一直慢慢安抚，回家还蓬蓬香香的。",
+  },
+  {
+    name: "奶茶主人",
+    pet: "英短 · 4 岁",
+    text: "圆脸修得很自然，没有剪成模板脸。护理记录也很细，发现耳朵有点红及时提醒了。",
+  },
+  {
+    name: "Lucky 主人",
+    pet: "金毛 · 9 岁",
+    text: "接送很省心，过程照片发得及时。老年犬也没有被催，整体体验很安心。",
+  },
+  {
+    name: "芝麻主人",
+    pet: "泰迪 · 5 岁",
+    text: "毛结处理得很耐心，没有硬扯。造型清爽好打理，第二天带去公园还有邻居问在哪剪的。",
+  },
+  {
+    name: "糯米主人",
+    pet: "布偶 · 3 岁",
+    text: "猫咪很怕吹风，店里分段休息慢慢吹，回家状态很放松，脚毛和指甲也修得干净。",
+  },
+  {
+    name: "可乐主人",
+    pet: "柯基 · 1 岁",
+    text: "第一次到店提前问了性格和过敏史，洗完会讲皮肤状态和换毛护理，比单纯洗干净更放心。",
+  },
+  {
+    name: "团子主人",
+    pet: "博美 · 6 岁",
+    text: "到店不用排很久，玻璃洗护区能看到过程。美容师手法温柔，团子离店时尾巴还在摇。",
+  },
+  {
+    name: "奥利奥主人",
+    pet: "雪纳瑞 · 7 岁",
+    text: "胡子和眉毛修得有精神但不夸张，细节沟通很顺。价格也提前确认，没有临时加项。",
+  },
+];
+
 export default function Home() {
+  const reviewItems = [...reviews, ...reviews];
+
   return (
     <>
 <header className="site-header">
@@ -168,19 +213,18 @@ export default function Home() {
           <h2>附近宠主的真实反馈</h2>
           <p>我们喜欢把小事做扎实：准时、干净、沟通清楚，宠物离店时状态轻松。</p>
         </div>
-        <div className="review-grid">
-          <article className="testimonial">
-            <strong>豆包主人</strong>
-            <p>以前洗澡会紧张发抖，这次美容师一直慢慢安抚，回家还蓬蓬香香的。</p>
-          </article>
-          <article className="testimonial">
-            <strong>奶茶主人</strong>
-            <p>圆脸修得很自然，没有剪成模板脸。护理记录也很细，发现耳朵有点红及时提醒了。</p>
-          </article>
-          <article className="testimonial">
-            <strong>Lucky 主人</strong>
-            <p>接送很省心，过程照片发得及时。老年犬也没有被催，整体体验很安心。</p>
-          </article>
+        <div className="review-carousel" aria-label="宠主评价轮播">
+          <div className="review-track">
+            {reviewItems.map((review, index) => (
+              <article className="testimonial" key={`${review.name}-${index}`}>
+                <div className="testimonial-header">
+                  <strong>{review.name}</strong>
+                  <span>{review.pet}</span>
+                </div>
+                <p>{review.text}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
