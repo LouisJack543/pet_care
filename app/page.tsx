@@ -1,5 +1,7 @@
 ﻿import Image from "next/image";
 
+import { BookingForm } from "./BookingForm";
+
 export default function Home() {
   return (
     <>
@@ -185,32 +187,33 @@ export default function Home() {
 
     <section className="booking" id="booking">
       <div className="section-inner">
-        <div>
+        <div className="booking-content">
           <h2>今天给毛孩子约一场清爽护理</h2>
           <p>留下宠物品种、体重、毛况和期望时间，我们会在营业时间内尽快确认档期。</p>
           <div className="hero-actions">
             <a className="button button-primary" href="tel:13800000000">电话预约</a>
             <a className="button button-ghost" href="mailto:hello@muzhua.example">邮件咨询</a>
           </div>
+          <aside className="booking-box" aria-label="门店信息">
+            <div className="booking-line">
+              <span>营业时间</span>
+              <strong>周一至周日 10:00-20:00</strong>
+            </div>
+            <div className="booking-line">
+              <span>门店地址</span>
+              <strong>幸福路 88 号宠物生活馆 1F</strong>
+            </div>
+            <div className="booking-line">
+              <span>预约电话</span>
+              <strong>138-0000-0000</strong>
+            </div>
+            <div className="booking-line">
+              <span>温馨提示</span>
+              <strong>到店请携带牵引绳或航空箱</strong>
+            </div>
+          </aside>
         </div>
-        <aside className="booking-box" aria-label="门店信息">
-          <div className="booking-line">
-            <span>营业时间</span>
-            <strong>周一至周日 10:00-20:00</strong>
-          </div>
-          <div className="booking-line">
-            <span>门店地址</span>
-            <strong>幸福路 88 号宠物生活馆 1F</strong>
-          </div>
-          <div className="booking-line">
-            <span>预约电话</span>
-            <strong>138-0000-0000</strong>
-          </div>
-          <div className="booking-line">
-            <span>温馨提示</span>
-            <strong>到店请携带牵引绳或航空箱</strong>
-          </div>
-        </aside>
+        <BookingForm />
       </div>
     </section>
 
