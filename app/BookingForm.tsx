@@ -135,7 +135,7 @@ export function BookingForm() {
         <div className="booking-success" role="status">
           <strong>预约信息已收到</strong>
           <span>
-            {submittedBooking.petType} · {submittedBooking.service} · {submittedBooking.preferredTime.replace("T", " ")}
+            {submittedBooking.petType} / {submittedBooking.service} / {submittedBooking.preferredTime.replace("T", " ")}
           </span>
         </div>
       ) : null}
